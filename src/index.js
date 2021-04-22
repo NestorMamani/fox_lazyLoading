@@ -1,6 +1,28 @@
-/**
- * This file is just a silly example to show everything working in the browser.
- * When you're ready to start on your site, clear the file. Happy hacking!
- **/
+import { registerImage } from './lazy';
 
-console.log('Happy hacking :)')
+const images = document.getElementById('images');
+const add_button = document.getElementById('add');
+const remove_button = document.getElementById('remove');
+
+let addImages = 0;
+
+add_button.addEventListener('click', () => {
+  const container = document.createElement('div');
+  container.classList.add('p-4');
+
+  const image = document.createElement('img');
+  image.classList.add('mx-auto');
+  image.width = 320;
+
+  container.append(image);
+
+  images.append(container);
+  registerImage(container);
+
+  addImages++;
+  console.log('Imágenes agregadas: ' + addImages);
+});
+
+remove_button.addEventListener('click', () => {
+  images.innerHTML = '';
+});
